@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "protobyter.co.uk.kaihack.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ServerNeuter"
+  ],
+  "client": [
+    "ServerNeuter"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

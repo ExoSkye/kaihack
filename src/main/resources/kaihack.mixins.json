@@ -6,11 +6,12 @@
   "mixins": [
     "BorderNeuter",
     "DemoNeuter",
+    "GameModeNeuter",
     "ServerNeuter"
   ],
   "client": [
-    "DemoScreenNeuter",
     "BorderNeuter",
+    "DemoScreenNeuter",
     "ServerNeuter"
   ],
   "injectors": {

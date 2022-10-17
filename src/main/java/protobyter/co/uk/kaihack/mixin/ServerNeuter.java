@@ -6,19 +6,18 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import com.mojang.logging.LogUtils;
 
 @Mixin(net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket.class)
-public class ServerNeuter {
-
-    static private final int PRECISION = 10;
+public abstract class ServerNeuter {
+    static private final int PRECISION = 100;
 
     private static float removePrecisionFloat(float value) {
-        return (float)removePrecisionDouble((double)value);
+        return (float)removePrecisionDouble(value);
     }
 
     private static double removePrecisionDouble(double value) {
         return (double) (long)(value * PRECISION) / PRECISION;
     }
 
-    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 0)
+    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private static double modifyX(double value)
     {
         double retval = removePrecisionDouble(value);
@@ -30,7 +29,7 @@ public class ServerNeuter {
         return retval;
     }
 
-    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 1)
+    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 1, argsOnly = true)
     private static double modifyY(double value)
     {
         double retval = removePrecisionDouble(value);
@@ -42,7 +41,7 @@ public class ServerNeuter {
         return retval;
     }
 
-    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 2)
+    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 2, argsOnly = true)
     private static double modifyZ(double value)
     {
         double retval = removePrecisionDouble(value);
@@ -54,7 +53,7 @@ public class ServerNeuter {
         return retval;
     }
 
-    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 0)
+    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
     private static float modifyYaw(float value)
     {
 
@@ -67,7 +66,7 @@ public class ServerNeuter {
         return retval;
     }
 
-    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 1)
+    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 1, argsOnly = true)
     private static float modifyPitch(float value)
     {
         float retval = removePrecisionFloat(value);

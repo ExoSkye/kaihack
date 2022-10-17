@@ -4,9 +4,13 @@
   "package": "protobyter.co.uk.kaihack.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BorderNeuter",
+    "DemoNeuter",
     "ServerNeuter"
   ],
   "client": [
+    "DemoScreenNeuter",
+    "BorderNeuter",
     "ServerNeuter"
   ],
   "injectors": {

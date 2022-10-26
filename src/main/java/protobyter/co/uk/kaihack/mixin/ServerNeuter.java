@@ -29,18 +29,6 @@ public abstract class ServerNeuter {
         return retval;
     }
 
-    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 1, argsOnly = true)
-    private static double modifyY(double value)
-    {
-        double retval = removePrecisionDouble(value);
-
-        if (((long)retval * 1000) % 10 != 0) {
-            LogUtils.getLogger().warn("Y was imprecise");
-        }
-
-        return retval;
-    }
-
     @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 2, argsOnly = true)
     private static double modifyZ(double value)
     {
@@ -53,28 +41,4 @@ public abstract class ServerNeuter {
         return retval;
     }
 
-    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
-    private static float modifyYaw(float value)
-    {
-
-        float retval = removePrecisionFloat(value);
-
-        if (((long)retval * 1000) % 10 != 0) {
-            LogUtils.getLogger().warn("Yaw was imprecise");
-        }
-
-        return retval;
-    }
-
-    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 1, argsOnly = true)
-    private static float modifyPitch(float value)
-    {
-        float retval = removePrecisionFloat(value);
-
-        if (((long)retval * 1000) % 10 != 0) {
-            LogUtils.getLogger().warn("Pitch was imprecise");
-        }
-
-        return retval;
-    }
 }

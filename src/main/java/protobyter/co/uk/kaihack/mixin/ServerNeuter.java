@@ -41,8 +41,4 @@ public abstract class ServerNeuter {
         return retval;
     }
 
-    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
-    private static float modifyYaw(float value)
-    {
-
 }
